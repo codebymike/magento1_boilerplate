@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <menu_tab translate="label" module="megamodule">
+            <label>Menu Label</label>
+            <sort_order>0</sort_order>
+        </menu_tab>
+    </tabs>
+</config>

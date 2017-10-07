@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Acme_MegaModule>
+            <version>0.0.1</version>
+        </Acme_MegaModule>
+    </modules>
+
+    <frontend>
+
+        <routers>
+            <megamodule>
+                <use>standard</use>
+                <args>
+                    <module>Acme_MegaModule</module>
+                    <frontName>megamodule</frontName>
+                </args>
+            </megamodule>
+        </routers>
+
+        <layout>
+            <updates>
+                <megamodule>
+                    <file>megamodule.xml</file>
+                </megamodule>
+            </updates>
+        </layout>
+    </frontend>
+
+    <global>
+
+        <helpers>
+            <megamodule>
+                <class>Acme_MegaModule_Helper</class>
+            </megamodule>
+        </helpers>
+
+        <blocks>
+            <megamodule>
+                <class>Acme_MegaModule_Block</class>
+            </megamodule>
+        </blocks>
+
+        <models>
+            <megamodule>
+                <class>Acme_MegaModule_Model</class>
+                <resourceModel>megamodule_mysql4</resourceModel>
+            </megamodule>
+            <megamodule_mysql4>
+                <class>Acme_MegaModule_Model_Mysql4</class>
+                <entities>
+                    <job>
+                        <table>jobs</table>
+                    </job>
+                </entities>
+            </megamodule_mysql4>
+        </models>
+
+        <resources>
+            <megamodule_setup>
+                <setup>
+                    <module>Acme_MegaModule</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </megamodule_setup>
+            <megamodule_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </megamodule_write>
+            <megamodule_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </megamodule_read>
+        </resources>
+
+        <events>
+            <cms_page_render>                               <!-- identifier of the event we want to catch -->
+                <observers>
+                    <cms_page_render_handler>               <!-- identifier of the event handler -->
+                        <type>model</type>                  <!-- class method call type; valid are model, object and singleton -->
+                        <class>megamodule/observer</class>  <!-- observers class alias -->
+                        <method>DoSomething</method>        <!-- observer's method to be called -->
+                        <args></args>                       <!-- additional arguments passed to observer -->
+                    </cms_page_render_handler>
+                </observers>
+            </cms_page_render>
+        </events>
+
+    </global>
+
+    <crontab>
+        <jobs>
+            <megamodule_dosomething>
+                <schedule>
+                    <cron_expr>*/10 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>megamodule/cron::DoSomething</model>
+                </run>
+            </megamodule_dosomething>
+        </jobs>
+    </crontab>
+
+</config> 

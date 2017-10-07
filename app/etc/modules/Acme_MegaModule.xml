@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Acme_MegaModule>
+            <active>true</active>
+            <codePool>local</codePool>
+            <version>0.0.1</version>
+        </Acme_MegaModule>
+    </modules>
+</config>

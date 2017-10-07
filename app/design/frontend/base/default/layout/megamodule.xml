@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.0.1">
+    <megamodule_index_index>
+
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+
+        <reference name="left">
+            <block type="megamodule/left" name="megamodule_left" template="megamodule/left.phtml"/>
+        </reference>
+
+        <reference name="content">
+            <block type="megamodule/index" name="megamodule_index" template="megamodule/index.phtml"/>
+        </reference>
+        
+    </megamodule_index_index>
+</layout>
